@@ -4,60 +4,52 @@ use warnings;
 use CGI;
 
 
-
 print "Content-type: text/html\n\n";
 print <<HTML;
 <!DOCTYPE html>
 <html>
-  <head> 
-    <meta charset="utf-8"> 
-    <link rel="stylesheet" type="text/css" href="../estilo.css">
-    <title>Búsquedas bibliográficas de Programación Web 1 </title>
-  </head>
+<head>
+    
+    <link rel="stylesheet" type="text/css" href="../estilos.css">
+    <title>Busquedas bibliograficas de Programacion Web 1 </title>
+</head>
 <body>
+    <div >
 HTML
+
 my $q = CGI->new;
-my $kind = $q->param("kind");
-my $keyword = $q->param("keyword");
+my $busqueda= $q->param("busqueda");
+my $indicador = $q->param("indicador");
 my $flag;
-if(!($kind eq "") && !($keyword eq "")){
-  open(IN,"../data/data.txt") or die "<h1>ERROR: open file</h1>\n";
-  while(my $line = <IN>){
-    my %dict = matchLine($line);
-    my $value = $dict{$kind};
-    if(defined($value) && $value =~ /.*$keyword.*/){
-      print "<h1>Encontrado: $line</h1>\n";
-      $flag = 1;
-      next; #continue the loop
+my $contador=0;
+my $encontrados=0;
+
+    $busqueda = uc $busqueda;
+    print "USTED INGRESO: ".$busqueda;
+
+    if($indicador eq "Nombre Universidad"){
+        &busqueda(1);
+    } 
+    elsif($indicador eq "Periodo Licenciamiento"){
+        &busqueda(4);
+    }elsif($indicador eq "Departamento Local"){
+        &busqueda(10);
+    }elsif($indicador eq "Denominacion Programa"){
+        &busqueda(16);
+    }else{
+        print "ERROR";
     }
-  }
-  close(IN);
-}
+
 if(!defined($flag)){
-  print "<h1>No encontrado</h1>\n";
+    print "<h1>No encontrado</h1>\n";
 }
+
 print <<HTML;
-    Ingrese <a href="../consulta.html">aqui</a> para regresar al formulario de búsqueda
-  </body>
+ Ingrese <a href="../portada.html">aqui</a> para regresar al formulario de búsqueda
+ </body>
 </html>
 HTML
-# line, return a hash array.
-sub matchLine{
-  my %dict = ();
-  my $line = $_[0];
-  if( $line =~ /^\[([0-9]+)\] ((.+), )?(.+); ((.+)|(http.+));(.+)\./ ){
-    $dict{"number"} = $1;
-    #$2 include the colon
-    if(defined($3)){ #algunos items no tienen autor
-      $dict{"author"} = $3;
-    }
-    $dict{"title"} = $4;
-    $dict{"editor"} = $5;
-    #$6 es la misma que $5, por opción |
-    #$7 es todas las opciones
-    $dict{"year"} = $8;
-  }else{
-    print "<h1>Error la linea no hace match: $line</h1>\n";
-  }
-  return %dict;
-}
+sub busqueda{
+    my ($numCasillero)=@_;
+    open(IN,"../licenciadas.csv") or die "<h1>ERROR: open file</h1>\n";
+        
