@@ -1,38 +1,98 @@
+
+body{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: 100%;
+  background: rgb(31, 37, 66);
+   
+
+  
+}
 *{
-    margin:0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.entrada{
-    width: 800px;
-    height: 400px;
-    background: #232d3a;
+.entrada1{
+     
+    
+
+    box-sizing: border-box;
+    background: #20274a;
+    
+    height: 750px;
+    width: 600px;
     padding: 30px;
     margin:auto;
     margin-top: 50px;
     border-radius: 10px;
-    font-family: 'calibri';
-    color: white;
+    font-family: 'Courier New';
+    color: #fff;
     box-shadow: 7px 1px 38px #000;
     
 
 }
-.entrada h1{
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-.control{
-    width: 30%;
-    height: 30px;
-    background:white;
+.entrada1 h1{
+    width: 400px;
     border-radius: 20px;
+    font-size: 50px;
     margin-bottom: 20px;
-    font-family: 'calibri';
+    /*background: #7f35a6;*/
+}
+
+.forma{
+    display: grid;
+    grid-template-columns: repeat(23,300px);
     
-
-
-
 }
 .boton{
-    width: 10%;
+    width: 20%;
+    
+    position: relative;
+    display: inline-block;
+    
+    color: white;
+    letter-spacing: 4px;
+    font-size: 10px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.2s;   
+    background: #0a1239;
+    margin: 200px;
+    padding: 50px 25px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    
+}
+.boton:hover{
+    background: #0a1239;
+    box-shadow: 0 0 80px #0a1239,0 0 40px #0a1239,0 0 80px #0a1239; 
+}
+.caja-texto{
+    width: 100%;
+    height: 40px;
+    background:  #20274a; 
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    border: 2px solid #ffffff;
+    font-family: 'calibri';
+    font-size: 30px;
+    color: white;
+    font-family: 'Courier New';
+}
+.caja-seleccion{
+    width: 400px;
+    height: 40px;
+    background:  #20274a; 
+    font-family: 'Courier New';
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #ffffff;
+    font-family: 'calibri';
+    font-size: 30px;
+    color: white;
+    
 }

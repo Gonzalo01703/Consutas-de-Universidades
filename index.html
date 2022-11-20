@@ -7,29 +7,23 @@
     
 </head>
 <body>
+    <div class="entrada1">
+        <h1 class="titulo">Busqueda De Universidades Licenciadas Del Peru</h1>
+        <form action="cgi-bin/bsuqueda.pl">
 
-    <section class="entrada">
-
-
+            <input type="text" name="busqueda" class="caja-texto" placeholder="Ingrese Datos">
+                <select class="caja-seleccion" name="indicador" >
+                        <option class="caja-seleccion">Nombre De Universidad</option>
+                        <option class="caja-seleccion">Periodo De Licenciamiento</option>
+                        <option class="caja-seleccion">Departamento Local</option>
+                        <option class="caja-seleccion">Denominacion De Programa</option>
+                </select>
+            <input class="boton" type="submit" value="BUSCAR">
         
-            <h1>Busquedas De Universidades Licenciadas</h1>
-
-        <form action="cgi-bin/buscador.pl" method="get">
-        <input class="control" type="text" name="buscardor">
-            <select name="lista" id="">
-                <option value="">Nombre De Universidad</option>
-                <option value="">Periodo De Licenciamiento</option>
-                <option value="">Departamento Local</option>
-                <option value="">Denominacion De Programa</option>
-            </select>
-        <input class="boton" type="text" value="Buscar">
-
-        
-
-
         </form>
-    </section>
 
+    </div>
     
+
 </body>
 </html>

@@ -10,8 +10,8 @@ print <<HTML;
 <html>
 <head>
     
-    <link rel="stylesheet" type="text/css" href="../estilos.css">
-    <title>Busquedas bibliograficas de Programacion Web 1 </title>
+    <link rel="stylesheet" type="text/css" href="../estilo.css">
+    <title>buscando</title>
 </head>
 <body>
     <div >
@@ -27,14 +27,14 @@ my $encontrados=0;
     $busqueda = uc $busqueda;
     print "USTED INGRESO: ".$busqueda;
 
-    if($indicador eq "Nombre Universidad"){
+    if($indicador eq "Nombre De Universidad"){
         &busqueda(1);
     } 
-    elsif($indicador eq "Periodo Licenciamiento"){
+    elsif($indicador eq "Periodo De Licenciamiento"){
         &busqueda(4);
     }elsif($indicador eq "Departamento Local"){
         &busqueda(10);
-    }elsif($indicador eq "Denominacion Programa"){
+    }elsif($indicador eq "Denominacion De Programa"){
         &busqueda(16);
     }else{
         print "ERROR";
@@ -45,11 +45,55 @@ if(!defined($flag)){
 }
 
 print <<HTML;
- Ingrese <a href="../portada.html">aqui</a> para regresar al formulario de búsqueda
+ Ingrese <a href="../index.html">aqui</a> para regresar al formulario de búsqueda
  </body>
 </html>
 HTML
+
 sub busqueda{
     my ($numCasillero)=@_;
     open(IN,"../licenciadas.csv") or die "<h1>ERROR: open file</h1>\n";
-        
+        while(my $line = <IN>){
+            my @palabras= split("/",$line);
+    
+            if($contador==0){
+                print <<HTML;
+                <div class="forma">
+HTML
+                foreach my $element (@palabras){
+                    
+                    print <<HTML;
+                    <div>
+HTML
+                    print $element;
+                    print <<HTML;
+                    </div>
+HTML
+                }
+                print <<HTML;
+                    </div>
+HTML
+                $contador++;
+            }
+            if($palabras[$numCasillero]=~ /$busqueda/){
+                 print <<HTML;
+                <div class="forma">
+HTML
+
+                foreach my $element (@palabras){
+                    print <<HTML;
+                    <div>
+HTML
+                    print $element;
+                    print <<HTML;
+                    </div>
+HTML
+                }
+                print <<HTML;
+                    </div>
+HTML
+                $flag=1;
+            }
+        }
+    close(IN);
+}
