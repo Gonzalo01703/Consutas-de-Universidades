@@ -1,0 +1,8 @@
+.forma{
+    display: grid;
+    grid-template-columns: repeat(23,300px);
+    background: #20274a;
+    color: #fff;
+
+    
+}

@@ -31,6 +31,8 @@ body{
     font-family: 'Courier New';
     color: #fff;
     box-shadow: 7px 1px 38px #000;
+
+    
     
 
 }
@@ -42,11 +44,14 @@ body{
     /*background: #7f35a6;*/
 }
 
-.forma{
+/*.forma{
     display: grid;
     grid-template-columns: repeat(23,300px);
+    background: white;
+    width: 200px;
+
     
-}
+}*/
 .boton{
     width: 20%;
     
